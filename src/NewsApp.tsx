@@ -1,18 +1,14 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {HomeScreen} from './screens';
-import colors from './theme/colors';
+import {NavigationContainer} from '@react-navigation/native';
+
+import StackNavigator from './navigation/StackNavigator';
 
 const NewsApp: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <HomeScreen />
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {backgroundColor: colors.white},
-});
 
 export default NewsApp;

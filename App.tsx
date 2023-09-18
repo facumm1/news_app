@@ -1,11 +1,12 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar, SafeAreaView} from 'react-native';
 
 import NewsApp from './src/NewsApp';
+import colors from './src/theme/colors';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <StatusBar barStyle={'light-content'} />
       <NewsApp />
     </SafeAreaView>
