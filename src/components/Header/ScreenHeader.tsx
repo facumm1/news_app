@@ -2,11 +2,16 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from '../../theme/colors';
 
-const HomeHeader: React.FC = () => {
+type Props = {
+  title: string;
+  subtitle: string;
+};
+
+const ScreenHeader: React.FC<Props> = ({title, subtitle}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Discover</Text>
-      <Text style={styles.subtitle}>News from all around the world</Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.subtitle}>{subtitle}</Text>
     </View>
   );
 };
@@ -17,4 +22,4 @@ const styles = StyleSheet.create({
   subtitle: {color: colors.gray, fontSize: 16},
 });
 
-export default HomeHeader;
+export default ScreenHeader;

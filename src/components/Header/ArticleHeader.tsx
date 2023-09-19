@@ -10,7 +10,6 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {useNavigate} from '../../hooks';
 import colors from '../../theme/colors';
 
 const {height} = Dimensions.get('window');
@@ -20,6 +19,9 @@ type Props = {
   publishedAt: string;
   author: string;
   urlToImage: string;
+  fillStar: boolean;
+  handleFavourite: () => void;
+  handleNav: () => void;
 };
 
 const ArticleHeader: React.FC<Props> = ({
@@ -27,9 +29,10 @@ const ArticleHeader: React.FC<Props> = ({
   publishedAt,
   author,
   urlToImage,
+  fillStar,
+  handleFavourite,
+  handleNav,
 }) => {
-  const handleNav = useNavigate('HomeScreen');
-
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={{uri: urlToImage}} />
@@ -40,8 +43,12 @@ const ArticleHeader: React.FC<Props> = ({
         <TouchableOpacity onPress={handleNav}>
           <Feather name="arrow-left" size={25} color={colors.white} />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <AntDesign name="staro" size={25} color={colors.white} />
+        <TouchableOpacity onPress={handleFavourite}>
+          <AntDesign
+            name={fillStar ? 'star' : 'staro'}
+            size={25}
+            color={fillStar ? colors.yellow : colors.white}
+          />
         </TouchableOpacity>
       </View>
 

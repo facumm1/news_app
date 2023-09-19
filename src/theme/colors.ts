@@ -4,6 +4,7 @@ type ColorTypes = {
   lightGray: string;
   blue: string;
   black: string;
+  yellow: string;
 };
 
 const colors: ColorTypes = {
@@ -12,6 +13,7 @@ const colors: ColorTypes = {
   lightGray: '#F0F0F0',
   blue: '#0F9BF2',
   black: '#000000',
+  yellow: '#ffb703',
 };
 
 export default colors;

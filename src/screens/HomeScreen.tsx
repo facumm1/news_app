@@ -1,28 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {useFetch} from '../hooks';
 
-import HomeHeader from '../components/Header/HomeHeader';
+import ScreenHeader from '../components/Header/ScreenHeader';
 import SearchBar from '../components/Field/SearchBar';
 import Loader from '../components/Loader/Loader';
 
 import {ArticleTypes} from '../types/ArticleTypes';
 import NewsArticleContainer from '../components/NewsArticleContainer';
+import {NewsContext} from '../context/NewsContext';
 
 const HomeScreen: React.FC = () => {
-  const {data, isLoading} = useFetch();
+  const {data, isLoading} = useContext(NewsContext);
 
   //TODO 1
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
       <View style={styles.content}>
-        <HomeHeader />
+        <ScreenHeader
+          title="Discover"
+          subtitle="News from all around the world"
+        />
         <SearchBar />
 
         {isLoading ? (
           <Loader />
         ) : (
-          data.map((articleData: ArticleTypes, index) => (
+          data.map((articleData: ArticleTypes, index: number) => (
             <NewsArticleContainer key={index} articleData={articleData} />
           ))
         )}

@@ -1,4 +1,6 @@
 export type ArticleTypes = {
+  id: string | number[];
+  isFavourite: boolean;
   title: string;
   author: string;
   publishedAt: string;

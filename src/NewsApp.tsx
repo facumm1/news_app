@@ -1,13 +1,16 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import StackNavigator from './navigation/StackNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
+import {NewsProvider} from './context';
 
 const NewsApp: React.FC = () => {
   return (
-    <NavigationContainer>
-      <StackNavigator />
-    </NavigationContainer>
+    <NewsProvider>
+      <NavigationContainer>
+        <BottomTabNavigator />
+      </NavigationContainer>
+    </NewsProvider>
   );
 };
 
