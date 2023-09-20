@@ -1,30 +1,34 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
+import React from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {ArticleTypes, FavsSliceTypes} from '../types';
 
-import {ArticleTypes} from '../types/ArticleTypes';
-import {NewsContext} from '../context/NewsContext';
 import ScreenHeader from '../components/Header/ScreenHeader';
 import FavError from '../components/Error/FavError';
 import NewsArticle from '../components/Button/NewsArticle';
 
 const FavScreen: React.FC = () => {
-  const {favs} = useContext(NewsContext);
+  const {favsData: favs} = useSelector(
+    (state: FavsSliceTypes) => state.favsData,
+  );
 
   return (
-    <View style={styles.content}>
-      <ScreenHeader
-        title="Favourites"
-        subtitle="Here you can find your favourite articles"
-      />
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <View style={styles.content}>
+        <ScreenHeader
+          title="Favourites"
+          subtitle="Here you can find your favourite articles"
+        />
 
-      {favs.length > 0 ? (
-        favs.map((articleData: ArticleTypes, index: number) => (
-          <NewsArticle key={index} {...articleData} />
-        ))
-      ) : (
-        <FavError />
-      )}
-    </View>
+        {favs.length > 0 ? (
+          favs.map((articleData: ArticleTypes, index: number) => (
+            <NewsArticle key={index} {...articleData} />
+          ))
+        ) : (
+          <FavError />
+        )}
+      </View>
+    </ScrollView>
   );
 };
 

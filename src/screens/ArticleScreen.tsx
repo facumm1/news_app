@@ -1,11 +1,13 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
 
 import ArticleHeader from '../components/Header/ArticleHeader';
 import ArticleContent from '../components/Content/ArticleContent';
 import {ArticleRouteType, NavigateProp} from '../types/NavigateTypes';
-import {NewsContext} from '../context/NewsContext';
-import {useIsFocused} from '@react-navigation/native';
+
+import {addNewFav, deleteFav, toggleAddedFav, toggleNewsFav} from '../redux';
 
 type Props = {
   route: ArticleRouteType;
@@ -26,27 +28,25 @@ const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
   } = route.params;
 
   const isFocused = useIsFocused();
+  const dispatch = useDispatch();
 
-  const {selectFavourite, handleFav, deleteFav, updateFav} =
-    useContext(NewsContext);
-
-  const toggleFavourite = () => {
+  const toggleStarIcon = () => {
     navigation.setParams({...route.params, isFavourite: !isFavourite});
   };
 
   //TODO 3
-  const addNewFav = () => {
-    toggleFavourite(); //Local
-    selectFavourite(id); // Updates in data array
-    handleFav(route.params); // Adds to favs array
-    updateFav(id); // Updates in favourites array
+  const addFav = () => {
+    toggleStarIcon(); //Local
+    dispatch(addNewFav(route.params)); // Adds to favs array
+    dispatch(toggleNewsFav(id)); // Updates in data array
+    dispatch(toggleAddedFav(id)); // Updates in favourites array
   };
 
   const removeFav = () => {
-    toggleFavourite(); // Local
-    selectFavourite(id); // Updates in data array
-    deleteFav(id); // Deletes in favs array
-    updateFav(id); // Updates in favourites array
+    toggleStarIcon(); // Local
+    dispatch(deleteFav(id)); // Deletes in favs array
+    dispatch(toggleNewsFav(id)); // Updates in data array
+    dispatch(toggleAddedFav(id)); // Updates in favourites array
   };
 
   const handleNav = () => {
@@ -71,7 +71,7 @@ const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
         urlToImage={urlToImage}
         fillStar={isFavourite}
         handleNav={handleNav}
-        handleFavourite={isFavourite ? removeFav : addNewFav}
+        handleFavourite={isFavourite ? removeFav : addFav}
       />
 
       <ArticleContent source={source.name} content={content} url={url} />

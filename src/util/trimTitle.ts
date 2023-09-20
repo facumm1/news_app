@@ -1,4 +1,8 @@
 const trimTitle = (title: string): string => {
+  if (!title) {
+    return title;
+  }
+
   const index = title.lastIndexOf('-');
 
   const newTitle = title.slice(0, index);

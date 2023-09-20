@@ -1,16 +1,17 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {ArticleTypes, NewsSliceTypes} from '../types';
 
 import ScreenHeader from '../components/Header/ScreenHeader';
 import SearchBar from '../components/Field/SearchBar';
 import Loader from '../components/Loader/Loader';
-
-import {ArticleTypes} from '../types/ArticleTypes';
 import NewsArticleContainer from '../components/NewsArticleContainer';
-import {NewsContext} from '../context/NewsContext';
 
 const HomeScreen: React.FC = () => {
-  const {data, isLoading} = useContext(NewsContext);
+  const {newsData: data, isLoading} = useSelector(
+    (state: NewsSliceTypes) => state.newsData,
+  );
 
   //TODO 1
   return (

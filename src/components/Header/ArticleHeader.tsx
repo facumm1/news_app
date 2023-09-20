@@ -33,6 +33,7 @@ const ArticleHeader: React.FC<Props> = ({
   handleFavourite,
   handleNav,
 }) => {
+  //TODO 4
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={{uri: urlToImage}} />
