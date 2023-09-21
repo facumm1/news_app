@@ -1,5 +1,15 @@
 import {ArticleTypes} from './ArticleTypes';
 import {NewsApiResponse} from './NewsApiResponse';
-import {FavsSliceTypes, NewsSliceTypes} from './SliceTypes';
+import {
+  FavsSliceTypes,
+  NewsSliceTypes,
+  SearchedDataSliceTypes,
+} from './SliceTypes';
 
-export type {ArticleTypes, NewsApiResponse, NewsSliceTypes, FavsSliceTypes};
+export type {
+  ArticleTypes,
+  NewsApiResponse,
+  NewsSliceTypes,
+  FavsSliceTypes,
+  SearchedDataSliceTypes,
+};

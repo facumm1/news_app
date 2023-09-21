@@ -7,7 +7,13 @@ import ArticleHeader from '../components/Header/ArticleHeader';
 import ArticleContent from '../components/Content/ArticleContent';
 import {ArticleRouteType, NavigateProp} from '../types/NavigateTypes';
 
-import {addNewFav, deleteFav, toggleAddedFav, toggleNewsFav} from '../redux';
+import {
+  addNewFav,
+  deleteFav,
+  toggleAddedFav,
+  toggleNewsFav,
+  toggleSearchedData,
+} from '../redux';
 
 type Props = {
   route: ArticleRouteType;
@@ -40,6 +46,7 @@ const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
     dispatch(addNewFav(route.params)); // Adds to favs array
     dispatch(toggleNewsFav(id)); // Updates in data array
     dispatch(toggleAddedFav(id)); // Updates in favourites array
+    dispatch(toggleSearchedData(id)); // Updates in searched array
   };
 
   const removeFav = () => {
@@ -47,6 +54,7 @@ const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
     dispatch(deleteFav(id)); // Deletes in favs array
     dispatch(toggleNewsFav(id)); // Updates in data array
     dispatch(toggleAddedFav(id)); // Updates in favourites array
+    dispatch(toggleSearchedData(id)); // Updates in searched array
   };
 
   const handleNav = () => {

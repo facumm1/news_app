@@ -12,3 +12,7 @@ export type FavsSliceTypes = {
     favsData: ArticleTypes[];
   };
 };
+
+export type SearchedDataSliceTypes = {
+  searchedData: {searchedData: ArticleTypes[]; dataLoading: boolean};
+};

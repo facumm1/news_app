@@ -10,7 +10,7 @@ type ColorTypes = {
 const colors: ColorTypes = {
   white: '#FFFFFF',
   gray: '#9C9C9C',
-  lightGray: '#F0F0F0',
+  lightGray: '#e8e6e6',
   blue: '#0F9BF2',
   black: '#000000',
   yellow: '#ffb703',

@@ -13,12 +13,18 @@ export const newsApi = createApi({
       query: () =>
         `/top-headlines?country=us&pageSize=8&category=health&apiKey=${apiKey}`,
       transformResponse: (res: NewsApiResponse) => {
-        console.log(res);
         const newsData = addID(res.articles);
         return newsData;
+      },
+    }),
+    searchNewsByKeyword: builder.query({
+      query: keyword => `/everything?apiKey=${apiKey}&pageSize=3&q=${keyword}`,
+      transformResponse: (res: NewsApiResponse) => {
+        const searchedData = addID(res.articles);
+        return searchedData;
       },
     }),
   }),
 });
 
-export const {useFetchNewsQuery} = newsApi;
+export const {useFetchNewsQuery, useSearchNewsByKeywordQuery} = newsApi;

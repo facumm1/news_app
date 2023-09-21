@@ -1,3 +1,4 @@
 import useNavigate from './useNavigate';
+import {useManageSearchResults} from './useManageSearchResults';
 
-export {useNavigate};
+export {useNavigate, useManageSearchResults};
