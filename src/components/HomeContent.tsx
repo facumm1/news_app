@@ -2,9 +2,11 @@ import React from 'react';
 
 import {useManageSearchResults} from '../hooks/';
 
-import NewsMap from './NewsMap';
-import SearchedNewsMap from './SearchedNewsMap';
 import SearchBar from './Field/SearchBar';
+import {
+  MemoizedNewsMap,
+  MemoizedSearchNewsMap,
+} from './Memo/MemoizedHomeContent';
 
 const HomeContent: React.FC = () => {
   const manageHook = useManageSearchResults();
@@ -14,9 +16,9 @@ const HomeContent: React.FC = () => {
       <SearchBar {...manageHook} />
 
       {!manageHook.renderSearchNews ? (
-        <NewsMap />
+        <MemoizedNewsMap />
       ) : (
-        <SearchedNewsMap keywordToSearch={manageHook.keywordToSearch} />
+        <MemoizedSearchNewsMap keywordToSearch={manageHook.keywordToSearch} />
       )}
     </>
   );

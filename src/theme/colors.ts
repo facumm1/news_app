@@ -5,6 +5,7 @@ type ColorTypes = {
   blue: string;
   black: string;
   yellow: string;
+  red: string;
 };
 
 const colors: ColorTypes = {
@@ -14,6 +15,7 @@ const colors: ColorTypes = {
   blue: '#0F9BF2',
   black: '#000000',
   yellow: '#ffb703',
+  red: '#eb4034',
 };
 
 export default colors;

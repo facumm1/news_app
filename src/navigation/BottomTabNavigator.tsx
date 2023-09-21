@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import StackNavigator from './StackNavigator';
@@ -8,9 +8,6 @@ import {
   stackNavigatorOptions,
 } from '../components/Tab/TabOptions';
 
-import {useFetchNewsQuery, setNewsData} from '../redux';
-import {useDispatch} from 'react-redux';
-
 export type TabParamList = {
   StackNavigator: undefined;
   FavStackNavigator: undefined;
@@ -19,16 +16,6 @@ export type TabParamList = {
 const Tab = createBottomTabNavigator<TabParamList>();
 
 const BottomTabNavigator: React.FC = () => {
-  const {data, isLoading} = useFetchNewsQuery({});
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!isLoading) {
-      dispatch(setNewsData(data));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
-
   return (
     <Tab.Navigator
       screenOptions={{

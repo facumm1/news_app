@@ -8,9 +8,7 @@ import FavError from '../components/Error/FavError';
 import NewsArticle from '../components/Button/NewsArticle';
 
 const FavScreen: React.FC = () => {
-  const {favsData: favs} = useSelector(
-    (state: FavsSliceTypes) => state.favsData,
-  );
+  const {favsData} = useSelector((state: FavsSliceTypes) => state.favsData);
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -20,8 +18,8 @@ const FavScreen: React.FC = () => {
           subtitle="Here you can find your favourite articles"
         />
 
-        {favs.length > 0 ? (
-          favs.map((articleData: ArticleTypes, index: number) => (
+        {favsData.length > 0 ? (
+          favsData.map((articleData: ArticleTypes, index: number) => (
             <NewsArticle key={index} {...articleData} />
           ))
         ) : (

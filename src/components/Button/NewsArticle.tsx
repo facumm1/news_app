@@ -8,7 +8,7 @@ import {useNavigate} from '../../hooks/';
 const NewsArticle: React.FC<ArticleTypes> = data => {
   const {title, publishedAt, urlToImage, source, shortTitle} = data;
 
-  const handleNav = useNavigate('ArticleScreen', data);
+  const {handleNav} = useNavigate('ArticleScreen', data);
 
   return (
     <TouchableOpacity onPress={handleNav} key={title} style={styles.container}>

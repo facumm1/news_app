@@ -11,14 +11,14 @@ export const newsApi = createApi({
   endpoints: builder => ({
     fetchNews: builder.query({
       query: () =>
-        `/top-headlines?country=us&pageSize=8&category=health&apiKey=${apiKey}`,
+        `/top-headlines?country=us&pageSize=7&category=general&apiKey=${apiKey}`,
       transformResponse: (res: NewsApiResponse) => {
         const newsData = addID(res.articles);
         return newsData;
       },
     }),
     searchNewsByKeyword: builder.query({
-      query: keyword => `/everything?apiKey=${apiKey}&pageSize=3&q=${keyword}`,
+      query: keyword => `/everything?apiKey=${apiKey}&pageSize=7&q=${keyword}`,
       transformResponse: (res: NewsApiResponse) => {
         const searchedData = addID(res.articles);
         return searchedData;

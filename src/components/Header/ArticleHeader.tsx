@@ -21,7 +21,7 @@ type Props = {
   urlToImage: string;
   fillStar: boolean;
   handleFavourite: () => void;
-  handleNav: () => void;
+  goBackNav: () => void;
 };
 
 const ArticleHeader: React.FC<Props> = ({
@@ -31,7 +31,7 @@ const ArticleHeader: React.FC<Props> = ({
   urlToImage,
   fillStar,
   handleFavourite,
-  handleNav,
+  goBackNav,
 }) => {
   //TODO 4
   return (
@@ -41,7 +41,7 @@ const ArticleHeader: React.FC<Props> = ({
       <View style={styles.darkBackground} />
 
       <View style={styles.btnContainer}>
-        <TouchableOpacity onPress={handleNav}>
+        <TouchableOpacity onPress={goBackNav}>
           <Feather name="arrow-left" size={25} color={colors.white} />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleFavourite}>

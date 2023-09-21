@@ -20,14 +20,14 @@ const SearchBar: React.FC<useManageHook> = ({
           style={styles.icon}
           size={25}
           name={'search'}
-          color={colors.gray}
+          color={colors.white}
         />
       </TouchableOpacity>
 
       <TextInput
         value={fieldValue}
         placeholder={'Search'}
-        style={{flex: 1}}
+        style={styles.field}
         onChangeText={handleFieldValue}
       />
 
@@ -37,7 +37,7 @@ const SearchBar: React.FC<useManageHook> = ({
             style={styles.icon}
             size={25}
             name={'back'}
-            color={colors.gray}
+            color={colors.white}
           />
         </TouchableOpacity>
       )}
@@ -51,17 +51,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'center',
     backgroundColor: colors.lightGray,
-    borderRadius: 50,
+    borderRadius: 10,
     flexDirection: 'row',
     width: '100%',
     marginBottom: 10,
   },
+  field: {flex: 1, paddingLeft: 10},
   searchBtn: {
-    borderRadius: 50,
+    borderRadius: 10,
+    backgroundColor: colors.blue,
+    height: '100%',
+    flexDirection: 'row',
   },
-  icon: {paddingHorizontal: 10},
+  icon: {paddingHorizontal: 7.5, alignSelf: 'center'},
   backBtn: {
-    borderRadius: 50,
+    borderRadius: 10,
+    backgroundColor: colors.red,
+    height: '100%',
+    flexDirection: 'row',
   },
 });
 

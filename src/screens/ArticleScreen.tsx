@@ -1,26 +1,19 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, ScrollView} from 'react-native';
-import {useDispatch} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 
 import ArticleHeader from '../components/Header/ArticleHeader';
-import ArticleContent from '../components/Content/ArticleContent';
 import {ArticleRouteType, NavigateProp} from '../types/NavigateTypes';
+import {MemoizedArticleContent} from '../components/Memo/MemoizedArticleContent';
 
-import {
-  addNewFav,
-  deleteFav,
-  toggleAddedFav,
-  toggleNewsFav,
-  toggleSearchedData,
-} from '../redux';
+import {useNavigate, useFavActions} from '../hooks';
 
 type Props = {
   route: ArticleRouteType;
   navigation: NavigateProp;
 };
 
-const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
+const ArticleScreen: React.FC<Props> = ({route}) => {
   const {
     id,
     isFavourite,
@@ -34,36 +27,21 @@ const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
   } = route.params;
 
   const isFocused = useIsFocused();
-  const dispatch = useDispatch();
+  const {goBackNav, toggleStarIcon} = useNavigate();
+  const {removeFav, addFav} = useFavActions();
 
-  const toggleStarIcon = () => {
-    navigation.setParams({...route.params, isFavourite: !isFavourite});
-  };
-
-  //TODO 3
-  const addFav = () => {
-    toggleStarIcon(); //Local
-    dispatch(addNewFav(route.params)); // Adds to favs array
-    dispatch(toggleNewsFav(id)); // Updates in data array
-    dispatch(toggleAddedFav(id)); // Updates in favourites array
-    dispatch(toggleSearchedData(id)); // Updates in searched array
-  };
-
-  const removeFav = () => {
-    toggleStarIcon(); // Local
-    dispatch(deleteFav(id)); // Deletes in favs array
-    dispatch(toggleNewsFav(id)); // Updates in data array
-    dispatch(toggleAddedFav(id)); // Updates in favourites array
-    dispatch(toggleSearchedData(id)); // Updates in searched array
-  };
-
-  const handleNav = () => {
-    navigation.goBack();
+  const handleFavAction = () => {
+    toggleStarIcon(route.params); //Local
+    if (isFavourite) {
+      removeFav(id as string);
+    } else {
+      addFav(route.params);
+    }
   };
 
   useEffect(() => {
     if (!isFocused) {
-      handleNav();
+      goBackNav();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFocused]);
@@ -78,11 +56,15 @@ const ArticleScreen: React.FC<Props> = ({route, navigation}) => {
         author={author}
         urlToImage={urlToImage}
         fillStar={isFavourite}
-        handleNav={handleNav}
-        handleFavourite={isFavourite ? removeFav : addFav}
+        goBackNav={goBackNav}
+        handleFavourite={handleFavAction}
       />
 
-      <ArticleContent source={source.name} content={content} url={url} />
+      <MemoizedArticleContent
+        source={source.name}
+        content={content}
+        url={url}
+      />
     </ScrollView>
   );
 };
