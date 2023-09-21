@@ -1,18 +1,19 @@
 import React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 import {ArticleTypes, FavsSliceTypes} from '../types';
 
 import ScreenHeader from '../components/Header/ScreenHeader';
 import FavError from '../components/Error/FavError';
 import NewsArticle from '../components/Button/NewsArticle';
+import FadeAnimWrapper from '../wrapper/FadeAnimWrapper';
 
 const FavScreen: React.FC = () => {
   const {favsData} = useSelector((state: FavsSliceTypes) => state.favsData);
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View style={styles.content}>
+      <FadeAnimWrapper wrapperStyle={styles.content}>
         <ScreenHeader
           title="Favourites"
           subtitle="Here you can find your favourite articles"
@@ -25,7 +26,7 @@ const FavScreen: React.FC = () => {
         ) : (
           <FavError />
         )}
-      </View>
+      </FadeAnimWrapper>
     </ScrollView>
   );
 };

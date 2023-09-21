@@ -1,8 +1,9 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import addID from '../util/addID';
 import {NewsApiResponse} from '../types/NewsApiResponse';
+import {NEWS_APIKEY} from '@env';
 
-const apiKey = '';
+const apiKey = NEWS_APIKEY;
 const baseUrl = 'https://newsapi.org/v2';
 
 export const newsApi = createApi({

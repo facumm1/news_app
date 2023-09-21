@@ -1,20 +1,21 @@
 import React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 
 import ScreenHeader from '../components/Header/ScreenHeader';
 import HomeContent from '../components/HomeContent';
+import FadeAnimWrapper from '../wrapper/FadeAnimWrapper';
 
 const HomeScreen: React.FC = () => {
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View style={styles.content}>
+      <FadeAnimWrapper wrapperStyle={styles.content}>
         <ScreenHeader
           title="Discover"
           subtitle="News from all around the world"
         />
 
         <HomeContent />
-      </View>
+      </FadeAnimWrapper>
     </ScrollView>
   );
 };
