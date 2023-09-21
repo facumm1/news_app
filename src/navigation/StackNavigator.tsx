@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {HomeScreen, ArticleScreen} from '../screens';
+import {HomeScreen, ArticleDetailsScreen} from '../screens';
 import {ArticleTypes} from '../types/ArticleTypes';
 import {setNewsData, useFetchNewsQuery} from '../redux';
 import {useDispatch} from 'react-redux';
 
 export type StackParamList = {
   HomeScreen: undefined;
-  ArticleScreen: ArticleTypes;
+  ArticleDetailsScreen: ArticleTypes;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -30,7 +30,10 @@ const StackNavigator: React.FC = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="ArticleScreen" component={ArticleScreen} />
+      <Stack.Screen
+        name="ArticleDetailsScreen"
+        component={ArticleDetailsScreen}
+      />
     </Stack.Navigator>
   );
 };

@@ -11,8 +11,8 @@ const SearchedNewsCond: React.FC<Props> = ({searchedData}) => {
   const renderData = searchedData === undefined;
 
   return !renderData ? (
-    searchedData.map((articleData: ArticleTypes, index: number) => (
-      <NewsArticleContainer key={index} articleData={articleData} />
+    searchedData.map((articleData: ArticleTypes) => (
+      <NewsArticleContainer key={articleData.id} articleData={articleData} />
     ))
   ) : (
     <NoResultsError />

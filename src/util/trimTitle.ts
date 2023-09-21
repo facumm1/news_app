@@ -14,4 +14,20 @@ const trimTitle = (title: string): string => {
   return newTitle;
 };
 
+export const trimAuthor = (author: string): string => {
+  if (!author) {
+    return author;
+  }
+
+  const index = author.lastIndexOf('-');
+
+  const newTitle = author.slice(0, index);
+
+  if (newTitle.length > 30) {
+    return newTitle.slice(0, 30).trim() + '...';
+  }
+
+  return newTitle;
+};
+
 export default trimTitle;

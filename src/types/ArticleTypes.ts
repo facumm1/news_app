@@ -1,5 +1,5 @@
 export type ArticleTypes = {
-  id: string | number[];
+  id: string;
   isFavourite: boolean;
   title: string;
   author: string;

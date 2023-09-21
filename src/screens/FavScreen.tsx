@@ -19,8 +19,8 @@ const FavScreen: React.FC = () => {
         />
 
         {favsData.length > 0 ? (
-          favsData.map((articleData: ArticleTypes, index: number) => (
-            <NewsArticle key={index} {...articleData} />
+          favsData.map((articleData: ArticleTypes) => (
+            <NewsArticle key={articleData.id} {...articleData} />
           ))
         ) : (
           <FavError />

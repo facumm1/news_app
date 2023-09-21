@@ -5,4 +5,7 @@ type ScreenName = keyof StackParamList;
 
 export type NavigateProp = NavigationProp<StackParamList, ScreenName>;
 
-export type ArticleRouteType = RouteProp<StackParamList, 'ArticleScreen'>;
+export type ArticleRouteType = RouteProp<
+  StackParamList,
+  'ArticleDetailsScreen'
+>;

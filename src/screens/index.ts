@@ -1,5 +1,5 @@
 import HomeScreen from './HomeScreen';
-import ArticleScreen from './ArticleScreen';
+import ArticleDetailsScreen from './ArticleDetailsScreen';
 import FavScreen from './FavScreen';
 
-export {HomeScreen, ArticleScreen, FavScreen};
+export {HomeScreen, ArticleDetailsScreen, FavScreen};

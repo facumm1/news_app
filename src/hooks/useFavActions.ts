@@ -26,7 +26,7 @@ const useFavActions = (): useFavActionsHook => {
 
   const addFav = (article: ArticleTypes) => {
     dispatch(addNewFav(article));
-    toggleFavActions(article.id as string);
+    toggleFavActions(article.id);
   };
 
   const removeFav = (id: string) => {

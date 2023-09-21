@@ -4,17 +4,16 @@ import {StackParamList} from '../navigation/StackNavigator';
 import {ArticleTypes} from '../types';
 
 type UseNavigateHook = {
-  handleNav: () => void;
+  handleNav: (data: ArticleTypes | any) => void;
   goBackNav: () => void;
   toggleStarIcon: (article: ArticleTypes) => void;
 };
 
-const useNavigate = (screenName?: string, props = {}): UseNavigateHook => {
-  //TODO 2
-  const navigation: NavigateProp = useNavigation();
+const useNavigate = (): UseNavigateHook => {
+  const navigation = useNavigation<NavigateProp>();
 
-  const handleNav = () => {
-    navigation.navigate(screenName as keyof StackParamList, props as any);
+  const handleNav = (data: ArticleTypes | any) => {
+    navigation.navigate('ArticleDetailsScreen' as keyof StackParamList, data);
   };
 
   const goBackNav = () => {

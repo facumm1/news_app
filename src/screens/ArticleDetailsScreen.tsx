@@ -3,17 +3,16 @@ import {StyleSheet, ScrollView} from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 
 import ArticleHeader from '../components/Header/ArticleHeader';
-import {ArticleRouteType, NavigateProp} from '../types/NavigateTypes';
+import {ArticleRouteType} from '../types/NavigateTypes';
 import {MemoizedArticleContent} from '../components/Memo/MemoizedArticleContent';
 
 import {useNavigate, useFavActions} from '../hooks';
 
 type Props = {
   route: ArticleRouteType;
-  navigation: NavigateProp;
 };
 
-const ArticleScreen: React.FC<Props> = ({route}) => {
+const ArticleDetailsScreen: React.FC<Props> = ({route}) => {
   const {
     id,
     isFavourite,
@@ -33,7 +32,7 @@ const ArticleScreen: React.FC<Props> = ({route}) => {
   const handleFavAction = () => {
     toggleStarIcon(route.params); //Local
     if (isFavourite) {
-      removeFav(id as string);
+      removeFav(id);
     } else {
       addFav(route.params);
     }
@@ -73,4 +72,4 @@ const styles = StyleSheet.create({
   container: {flex: 1},
 });
 
-export default ArticleScreen;
+export default ArticleDetailsScreen;

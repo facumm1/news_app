@@ -5,7 +5,6 @@ import ScreenHeader from '../components/Header/ScreenHeader';
 import HomeContent from '../components/HomeContent';
 
 const HomeScreen: React.FC = () => {
-  //TODO 1
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
       <View style={styles.content}>

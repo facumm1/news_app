@@ -9,9 +9,11 @@ type Props = {
 
 const NewsCond: React.FC<Props> = ({newsData}) => {
   return newsData ? (
-    newsData.map((articleData: ArticleTypes, index: number) => (
-      <NewsArticleContainer key={index} articleData={articleData} />
-    ))
+    newsData.map((articleData: ArticleTypes) => {
+      return (
+        <NewsArticleContainer key={articleData.id} articleData={articleData} />
+      );
+    })
   ) : (
     <NoResultsError />
   );

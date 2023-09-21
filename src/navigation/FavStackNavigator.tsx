@@ -1,12 +1,12 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {ArticleScreen, FavScreen} from '../screens';
+import {ArticleDetailsScreen, FavScreen} from '../screens';
 import {ArticleTypes} from '../types/ArticleTypes';
 
 export type StackParamList = {
   FavScreen: undefined;
-  ArticleScreen: ArticleTypes;
+  ArticleDetailsScreen: ArticleTypes;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -17,8 +17,11 @@ const FavStackNavigator: React.FC = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="FavScreen" children={() => <FavScreen />} />
-      <Stack.Screen name="ArticleScreen" component={ArticleScreen} />
+      <Stack.Screen name="FavScreen" component={FavScreen} />
+      <Stack.Screen
+        name="ArticleDetailsScreen"
+        component={ArticleDetailsScreen}
+      />
     </Stack.Navigator>
   );
 };
