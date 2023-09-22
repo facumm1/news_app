@@ -1,79 +1,73 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# IT Crowd - Junior React Native Coding Challenge - NewsApp
+Hi! This is a coding challenge for IT Crowd. I created a news application that:
 
-# Getting Started
+- Displays real-time news using a news API (I used NewsAPI from newsapi.org ✓)
+- The application should display a list of news articles. (done ✓)
+- Allow users to touch an article to view more details and save favorite articles in a favorites section. (done ✓)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Application Optional Features
+NewsApp has the following optional features:
 
-## Step 1: Start the Metro Server
+- Implement the solution using TypeScript: ✓
+- Allows users to search for news by keyword:
+  NewsApp shows the first 7 results found. ✓
+- **Redux-toolkit** to manage application state:
+  Used for general news, searched news and favourites news. ✓
+- **RTK Query** to manage API calls and data:
+  Used for fetching NewsAPI. ✓
+- Implement smooth animations or transitions when switching views or hiding elements:
+  I created a HOC that adds a fade animation to Home and FavScreen using Animated native API.
+- Use **React Navigation** for screen navigation:
+  Used Bottom Tab Navigator with Stack Navigators to navigate between general/searched news and favourites news.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Most relevant libraries
+- React Navigation
+  Added Native Stack Navigator and Bottom Tab Navigator. In order to install this library I had to install: react-native-safe-area-context, screens and native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- React-native-vector-icons
+  This library was used for adding pretty icons from oblador.github.io/react-native-vector-icons/.
+  It enhances UI experience.
 
-```bash
-# using npm
-npm start
+- React-native-dotenv (devDependency)
+  Used for adding news api key as an env var
 
-# OR using Yarn
-yarn start
-```
+- React-native-uuid
+  Used for adding an ID to each newsData (General news data, favourite news data and searched news data). This allows NewsApp to identify and check if general news orsearched news are already added to favourites.
 
-## Step 2: Start your Application
+- React-redux & @reduxjs/toolkit
+  Used for state managing in general news data, favourite news data and searched news data.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## Technologies Used
+- React Native
+- Typescript
+- Redux-toolkit
+- RTK Query
 
-### For Android
+## How to initialize app in debug mode
+To initialize this application, you have to install dependencies using:
+- yarn install
 
-```bash
-# using npm
-npm run android
+After your dependencies installation, you have to add your api key into your .env file:
+- Create .env file at root project location and write your api key:
+  NEWS_APIKEY=your_api_key
 
-# OR using Yarn
-yarn android
-```
+Then initialize the app with:
+- yarn android
 
-### For iOS
+## How to build an apk release
+Before this, please make sure you have your api key into your .env file.
+For an .apk release, you have to build it inside android folder:
 
-```bash
-# using npm
-npm run ios
+- cd /news_app/android
+- ./gradlew assembleRelease
 
-# OR using Yarn
-yarn ios
-```
+Find your .apk file using
+- cd /news_app/android/app/build/outputs/apk/release
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
 
-Now that you have successfully run the app, let's modify it.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
